@@ -18,12 +18,12 @@ public interface ShardRegister {
 	DataSource getDataSource(String identity);
 
 	/**
-	 * 功能描述：获取所有数据源<br>
+	 * 功能描述：获取所有数据源
 	 */
 	Map<String, DataSource> getDataSources();
 
 	/**
-	 * 功能描述：获取所有shard分片<br>
+	 * 功能描述：获取所有shard分片
 	 */
 	Set<Shard> getShards();
 }
