@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+	<!-- 控制台输出日志 -->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} -%msg%n</pattern>
+		</layout>
+	</appender>
+	
+	<!-- 文件输出日志 (文件大小策略进行文件输出，超过指定大小对文件备份) -->
+	<appender name="FILE"
+		class="com.adanac.framework.log.appender.rolling.SnfRollingFileAppender">
+		<File>/opt/log/sample.log</File>
+		<!-- 日志文件rolling策略 -->
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<FileNamePattern>/opt/log/sample.%i.log.zip</FileNamePattern>
+			<MinIndex>1</MinIndex>
+			<MaxIndex>12</MaxIndex>
+		</rollingPolicy>
+		<!-- 日志文件rolling触发策略 -->
+		<triggeringPolicy
+			class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<MaxFileSize>100MB</MaxFileSize>
+		</triggeringPolicy>
+		<!-- 日志内容format策略,此处为snf订制,完成对日志信息的json化操作,若无此策略,SnfRollingFileAppender表现 
+			与 logback自带RollingFileAppender行为一致 -->
+		<!-- <formattingPolicy class="com.adanac.framework.log.policy.JsonFormattingPolicy" /> -->
+		<!-- 日志输出格式 -->
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} -%msg%n</pattern>
+		</layout>
+	</appender>	
+	
+	<logger name="com.adanac.sample.impl" additivity="false">
+		<level value="info" />
+		<appender-ref ref="FILE" />
+	</logger>
+	
+	<root level="DEBUG">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="FILE" />
+	</root>
+</configuration>

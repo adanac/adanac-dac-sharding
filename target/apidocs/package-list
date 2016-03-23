@@ -1,0 +1,11 @@
+com.adanac.framework.dac.client.support
+com.adanac.framework.dac.datasource
+com.adanac.framework.dac.datasource.group
+com.adanac.framework.dac.parsing.annotation
+com.adanac.framework.dac.parsing.xml
+com.adanac.framework.dac.route.annotation
+com.adanac.framework.dac.route.exception
+com.adanac.framework.dac.route.support
+com.adanac.framework.dac.route.support.hash
+com.adanac.framework.dac.route.xmltags
+com.adanac.framework.dac.transaction
